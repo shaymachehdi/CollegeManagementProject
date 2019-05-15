@@ -1,0 +1,39 @@
+﻿@model CollegeManagementProject.Models.TypeSalle
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<center>
+    <h2 style="color:coral">Etes-vous sûr de supprimer le type n°: @Html.DisplayFor(model => model.TypeSalleId) ?</h2>
+</center>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal0" style="text-align:center">
+        <dt>
+            Designation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <br>
+
+            <div class="form-actions no-color" style="text-align:center">
+                <input type="submit" value="Delete" class="btn btn-default" />&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="color:black" href="@Url.Action("Index", new { id = Model.TypeSalleId })">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+
+            </div>
+        }
+</div>

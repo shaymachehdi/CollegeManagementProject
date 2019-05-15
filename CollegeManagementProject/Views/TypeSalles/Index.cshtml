@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CollegeManagementProject.Models.TypeSalle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="banner_content text-center">
+                        <h2>Niveaux</h2>
+
+                        <p>
+                            Veuillez trouver ci dessous la <br>
+                            liste de nos Typde de salles
+
+                        </p>
+
+                        <div class="page_link">
+                            <a>
+                                @Html.ActionLink("Acceuil", "Index", "Home")
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<p class="body">
+    <a style="color:black">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;
+        @Html.ActionLink("Ajouter un nouveau type salle", "Create")
+
+
+</p><br>
+<center>
+    <table class="table">
+        <tr>
+            <th style="color:brown">
+                Code Type salle
+            </th>
+            <th style="color:brown">
+                Designation
+            </th>
+
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="color:black">
+                    @Html.DisplayFor(modelItem => item.TypeSalleId)
+                </td>
+                <td style="color:black">
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+
+
+                <td>
+                    <a style="color:black" href="@Url.Action("Edit", new { id = item.TypeSalleId })">
+                        <i class="glyphicon glyphicon-edit"></i> |
+                        <a style="color:black" href="@Url.Action("Details", new { id = item.TypeSalleId })">
+                            <i class="glyphicon glyphicon-list-alt"></i> |
+                            <a style="color:black" href="@Url.Action("Delete", new { id = item.TypeSalleId })">
+                                <i class="glyphicon glyphicon-trash"></i>
+            </tr>
+        }
+
+    </table>
+</center>

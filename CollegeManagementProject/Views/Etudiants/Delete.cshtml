@@ -1,0 +1,87 @@
+﻿@model CollegeManagementProject.Models.Etudiant
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<center>
+    <h2 style="color:coral">Etes-vous sûr de supprimer l'élève n°: @Html.DisplayFor(model => model.EtudiantId) ?</h2>
+</center>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal0" style="text-align:center">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            Prénom
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+        <dt>
+            Date naissance
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateNaissance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+        <dt>
+            Code classe
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClasseId)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <br>
+
+        <div class="form-actions no-color" style="text-align:center">
+            <input type="submit" value="Delete" class="btn btn-default" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <a style="color:black" href="@Url.Action("Index", new { id = Model.EtudiantId })">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+
+        </div>
+    }
+</div>
+

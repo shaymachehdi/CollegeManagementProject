@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="banner_content text-center">
+                        <h2>Qui sommes nous?</h2>
+                        <p>
+                            EduSmart High School est une école  qui fonctionne selon les programmes <br>
+                            officiels de l’Education Nationale française.<br>
+
+                        </p>
+                        <div class="page_link">
+                            <a>@Html.ActionLink("Acceuil", "Index", "Home")</a>
+                            <a>@Html.ActionLink("A propos", "About", "Home")</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================ Start Department Area =================-->
+<div class="department_area section_gap">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-center">
+                <img class="img-fluid" src=@Url.Content("~/Content/img/about-img.png") alt="">
+            </div>
+
+            <div class="offset-lg-1 col-lg-5">
+                <div class="dpmt_right">
+                    <h3 style="color:coral">Plus qu'une collége nous somme une famille</h3>
+                    <p>
+
+                        L’inscription demande une réflexion des plus poussées afin de trouver le bon établissement pour son enfant. Conscient des<br>
+                        préoccupations des familles, EduSmart High School offre des conditions exceptionnelles d’apprentissage dans un cadre attrayant,<br>
+                        de la Petite section de maternelle à la Terminale.<br>
+
+                        Plus de 150 élèves ont fait le choix de s’inscrire à EduSmart High School. Les valeurs   de notre école tournée vers la réussite,<br>
+                        la citoyenneté et l’épanouissement font de chaque élève un citoyen en devenir, conscient de ses talents et de ses capacités.<br>
+
+                        L’enseignement de l’arabe trouve sa place d’honneur par un horaire renforcé.  En effet, pendant les cours d’arabe, l’élève<br>
+                        apprend non seulement le fonctionnement de la langue, mais il découvre la littérature et la civilisation de ses ancêtres.<br>
+                        Nous le voulons fier de lui-même, de ses origines et de son  pays.
+                    </p>
+                    <p>
+                        Les classes à projets spécifiques :<br>
+
+                        6ème/ 5ème  / 4ème / 3ème  / Seconde / les différentes classes de 1ère<br>
+
+                        EduSmart High School met à la disposition de ses élèves tous les moyens pour s’épanouir socialement et intellectuellement,<br>
+                        elle leur offre l’encadrement et le confort nécessaires pendant leur présence à l’école :<br>
+                    </p>
+                    <input  vlaue="Voir" type="submit" value="Voir nos cours" class="primary-btn text-uppercase" onclick="location.href='@Url.Action("Index","MatiéreSimpleUtilisateur")'"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================ End Department Area =================-->
+<!--================ Start Instructor Area =================-->

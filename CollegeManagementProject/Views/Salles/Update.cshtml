@@ -1,0 +1,55 @@
+﻿@model CollegeManagementProject.Models.Salle
+
+@{
+    /**/
+
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<br> <br>
+
+<center><h2 style="color:coral">Modifier la salle n°: @Html.DisplayFor(model => model.SalleId)</h2></center>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.SalleId)
+
+        <div class="form-group">
+            <p class="control-label col-md-2">Designation </p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">Code salle type</p>
+            <div class="col-md-10">
+                @Html.DropDownList("NiveauId", (IEnumerable<SelectListItem>)ViewBag.TypeSalleList)
+                @Html.ValidationMessageFor(model => model.TypeSalleId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" /> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a style="color:black" href="@Url.Action("Index", new { id = Model.SalleId })">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+

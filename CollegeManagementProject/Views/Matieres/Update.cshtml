@@ -1,0 +1,83 @@
+﻿@model CollegeManagementProject.Models.Matiere
+
+@{
+    /**/
+
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<br> <br>
+
+<center><h2 style="color:coral">Modifier les information de cours n°: @Html.DisplayFor(model => model.MatiereId)</h2></center>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <p class="control-label col-md-2">Designation</p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <p class="control-label col-md-2">Date de cours </p>
+        <div class="col-md-10">
+            <input type="date" name="DateMatiere" id="datepicker" class="form-control" width="276" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <p class="control-label col-md-2">Code salle</p>
+        <div class="col-md-10">
+            @Html.DropDownList("SalleId", (IEnumerable<SelectListItem>)ViewBag.SalleList, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SalleId)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <p class="control-label col-md-2">Code niveau</p>
+        <div class="col-md-10">
+            @Html.DropDownList("NiveauId", (IEnumerable<SelectListItem>)ViewBag.NiveauList, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NiveauId)
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <p class="control-label col-md-2">Code enseignant</p>
+        <div class="col-md-10">
+            @Html.DropDownList("EnseignantId", (IEnumerable<SelectListItem>)ViewBag.EnseignantList, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EnseignantId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Créer" class="btn btn-default" /> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a style="color:black" href="@Url.Action("Index")">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+        </div>
+    </div>
+</div>
+}
+
+
+
+
+
+
+

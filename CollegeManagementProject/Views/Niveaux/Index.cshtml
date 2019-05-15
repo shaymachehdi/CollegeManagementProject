@@ -1,0 +1,101 @@
+﻿@model IPagedList<CollegeManagementProject.Models.Niveau>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="banner_content text-center">
+                        <h2>Niveaux</h2>
+
+                        <p>
+                            Veuillez trouver ci dessous la <br>
+                            liste de nos Niveaux
+
+                        </p>
+
+                        <div class="page_link">
+                            <a>
+                                @Html.ActionLink("Acceuil", "Index", "Home")
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<p class="body">
+    <a style="color:black">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;
+        @Html.ActionLink("Ajouter un nouveau niveau", "Create")
+
+
+</p><br>
+<center>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des Niveaux</div>
+            <div class="panel-body">
+
+                <table class="table">
+                    <tr>
+                        <th style="color:brown">
+                            Code Niveau
+                        </th>
+                        <th style="color:brown">
+                            Designation
+                        </th>
+
+
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.NiveauId)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.DesignationNiveau)
+                            </td>
+
+
+                            <td>
+                                <a style="color:black" href="@Url.Action("Edit", new { id = item.NiveauId })">
+                                    <i class="glyphicon glyphicon-edit"></i> |
+                                    <a style="color:black" href="@Url.Action("Details", new { id = item.NiveauId })">
+                                        <i class="glyphicon glyphicon-list-alt"></i> |
+                                        <a style="color:black" href="@Url.Action("Delete", new { id = item.NiveauId })">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                        </tr>
+                    }
+
+                </table>
+
+
+                <div>
+                    @Html.PagedListPager(Model, i => Url.Action("Index", "Niveaux", new { i, search = Request.QueryString["search"] }))
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</center>

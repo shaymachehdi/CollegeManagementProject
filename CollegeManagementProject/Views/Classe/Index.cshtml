@@ -1,0 +1,101 @@
+﻿@model IPagedList<CollegeManagementProject.Models.Classe>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="banner_content text-center">
+                        <h2>Classes</h2>
+
+                        <p>
+                            veuillez trouver ci dessous la <br>
+                            liste de nos classes
+
+                        </p>
+
+                        <div class="page_link">
+                            <a>
+                                @Html.ActionLink("Acceuil", "Index", "Home")
+                            </a>0
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<p class="body">
+    <a style="color:black">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;
+        @Html.ActionLink("Ajouter un nouveau classe", "Add")
+
+
+</p><br>
+<center>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des classes</div>
+            <div class="panel-body">
+
+                <table class="table">
+                    <tr>
+                        <th style="color:brown">
+                            Code classe
+                        </th>
+                        <th style="color:brown">
+                            Designation
+                        </th>
+                        <th style="color:brown">
+                            Code Niveau
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.ClasseId)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.NiveauId)
+                            </td>
+
+                            <td>
+                                <a style="color:black" href="@Url.Action("Update", new { id = item.ClasseId })">
+                                    <i class="glyphicon glyphicon-edit"></i> |
+                                    <a style="color:black" href="@Url.Action("Details", new { id = item.ClasseId })">
+                                        <i class="glyphicon glyphicon-list-alt"></i> |
+                                        <a style="color:black" href="@Url.Action("Delete", new { id = item.ClasseId })">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                        </tr>
+                    }
+
+                </table>
+
+                <div>
+                    @Html.PagedListPager(Model, i => Url.Action("Index", "Classe", new { i, search = Request.QueryString["search"] }))
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</center>

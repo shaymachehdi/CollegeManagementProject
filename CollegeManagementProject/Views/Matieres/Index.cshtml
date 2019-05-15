@@ -1,0 +1,128 @@
+﻿@model IPagedList<CollegeManagementProject.Models.Matiere>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="banner_content text-center">
+                        <h2>Cours</h2>
+
+                        <p>
+                            Veuillez trouver ci dessous la <br>
+                            liste de nos cours
+
+                        </p>
+
+                        <div class="page_link">
+                            <a>
+                                @Html.ActionLink("Acceuil", "Index", "Home")
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<p class="body">
+    <a style="color:black">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;
+        @Html.ActionLink("Ajouter un nouveau cours", "Add")
+
+
+</p><br>
+<center>
+    <div class="spacer">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des cours</div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th style="color:brown">
+                            Code cours
+                        </th>
+                        <th style="color:brown">
+                            Designation
+                        </th>
+                      
+                        <th style="color:brown">
+                            Date de cours
+                        </th>
+
+                        <th style="color:brown">
+                            code salle
+                        </th>
+
+
+                        <th style="color:brown">
+                            code niveau
+                        </th>
+
+
+                        <th style="color:brown">
+                            Nom enseignant
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.MatiereId)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.DateMatiere)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.SalleId)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.NiveauId)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.EnseignantId)
+                            </td>
+
+                           
+
+                            <td>
+                                <a style="color:black" href="@Url.Action("Update", new { id = item.MatiereId })">
+                                    <i class="glyphicon glyphicon-edit"></i> |
+                                    <a style="color:black" href="@Url.Action("Details", new { id = item.MatiereId })">
+                                        <i class="glyphicon glyphicon-list-alt"></i> |
+                                        <a style="color:black" href="@Url.Action("Delete", new { id = item.MatiereId })">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                        </tr>
+                    }
+
+                </table>
+                <div>
+                    @Html.PagedListPager(Model, i => Url.Action("Index", "Matieres", new { i, search = Request.QueryString["search"] }))
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</center>

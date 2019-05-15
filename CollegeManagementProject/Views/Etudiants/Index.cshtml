@@ -1,0 +1,145 @@
+﻿@model IPagedList<CollegeManagementProject.Models.Etudiant>
+@*@model PagedList.IPagedList<Etudiant>
+    @using CollegeManagementProject.Models;
+    @using PagedList;
+    @using PagedList.Mvc;*@
+
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="banner_content text-center">
+                        <h2>Elèves</h2>
+
+                        <p>
+                            veuillez trouver ci dessous la <br>
+                            liste de nos élèves
+
+                        </p>
+
+                        <div class="page_link">
+                            <a>
+                                @Html.ActionLink("Acceuil", "Index", "Home")
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<p class="body">
+    <a style="color:black">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;
+        @Html.ActionLink("Ajouter un nouveau élève", "Add")
+
+
+</p><br>
+<center>
+    <div class="spacer">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des élèves</div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th style="color:brown">
+                            Code élève
+                        </th>
+                        <th style="color:brown">
+                            Nom
+                        </th>
+                        <th style="color:brown">
+                            Prénom
+                        </th>
+                        <th style="color:brown">
+                            Date de naissance
+                        </th>
+
+                        <th style="color:brown">
+                            Adresse
+                        </th>
+
+
+                        <th style="color:brown">
+                            E-mail
+                        </th>
+
+
+                        <th style="color:brown">
+                            Tel
+                        </th>
+
+
+                        <th style="color:brown">
+                            Code classe
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.EtudiantId)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Nom)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Prenom)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.DateNaissance)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Adresse)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Tel)
+                            </td>
+
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.classe)
+                            </td>
+
+                            <td>
+                                <a style="color:black" href="@Url.Action("Update", new { id = item.EtudiantId })">
+                                    <i class="glyphicon glyphicon-edit"></i> |
+                                    <a style="color:black" href="@Url.Action("Details", new { id = item.EtudiantId })">
+                                        <i class="glyphicon glyphicon-list-alt"></i> |
+                                        <a style="color:black" href="@Url.Action("Delete", new { id = item.EtudiantId })">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                        </tr>
+                    }
+
+                </table>
+                <div>
+                    @Html.PagedListPager(Model, i => Url.Action("Index", "Etudiants", new { i, search = Request.QueryString["search"]}))
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</center>

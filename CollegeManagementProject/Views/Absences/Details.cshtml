@@ -1,0 +1,50 @@
+﻿@model CollegeManagementProject.Models.Absence
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br> <br>
+
+
+<center>
+    <h2 style="color:coral">Details de l'absence n°: @Html.DisplayFor(model => model.AbsenceId)</h2>
+</center>
+
+
+<div style="text-align:center">
+    <br>
+    <div>
+        <a style="color:black" href="@Url.Action("Edit", new { id = Model.AbsenceId })">
+            <i class="glyphicon glyphicon-edit"></i> |
+            <a style="color:black" href="@Url.Action("Index", new { id = Model.AbsenceId })">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+    </div>
+
+    <hr />
+
+    <dl class="dl-horizontal" style="text-align:center">
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAbsence)
+        </dd>
+
+
+        <dt>
+            Code élève
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EtudiantID)
+        </dd>
+
+
+
+    </dl>
+
+</div>
+<br>

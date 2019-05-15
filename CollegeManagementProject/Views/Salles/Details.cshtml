@@ -1,0 +1,48 @@
+﻿@model CollegeManagementProject.Models.Salle
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br> <br>
+
+
+<center>
+    <h2 style="color:coral">Details de la salle n°: @Html.DisplayFor(model => model.SalleId)</h2>
+</center>
+
+
+<div style="text-align:center">
+    <br>
+    <div>
+        <a style="color:black" href="@Url.Action("Edit", new { id = Model.SalleId })">
+            <i class="glyphicon glyphicon-edit"></i> |
+            <a style="color:black" href="@Url.Action("Index", new { id = Model.SalleId })">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+    </div>
+
+    <hr />
+
+    <dl class="dl-horizontal" style="text-align:center">
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+        <dt>
+            Code type salle
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalleId)
+        </dd>
+
+
+    </dl>
+
+</div>
+<br>

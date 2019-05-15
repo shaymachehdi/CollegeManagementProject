@@ -1,0 +1,31 @@
+{
+    "name": "tail.datetime",
+    "version": "0.4.8",
+    "description": "A powerful, translat- and configurable DateTime Picker, written in Vanilla JavaScript without any dependencies!",
+    "keywords": [
+        "datetime-picker",
+        "datetime",
+        "date",
+        "time",
+        "picker",
+        "calendar",
+        "vanilla",
+        "tail"
+    ],
+    "author": "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
+    "license": "MIT",
+    "homepage": "https://github.com/pytesNET/tail.DateTime",
+
+    "main": "js/tail.datetime.js",
+    "bugs": {
+        "url": "https://github.com/pytesNET/tail.DateTime/issues",
+        "email": "info@pytes.net"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/pytesNET/tail.DateTime.git"
+    },
+
+    "reveal": true,
+    "jsdelivr": "js/tail.datetime.full.js"
+}

@@ -1,0 +1,55 @@
+﻿@model CollegeManagementProject.Models.Absence
+@{
+    /**/
+
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<br> <br>
+
+<center><h2 style="color:coral">Modifier l'absence n°: @Html.DisplayFor(model => model.AbsenceId)</h2></center>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.AbsenceId)
+
+        <div class="form-group">
+            <p class="control-label col-md-2">Date </p>
+                <div class="col-md-10">
+                    <input type="date" name="DateAbsence" id="datepicker" class="form-control" width="276" />
+     
+                </div>
+            </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">Code etudiant</p>
+            <div class="col-md-10">
+                @Html.DropDownList("EtudiantID", (IEnumerable<SelectListItem>)ViewBag.EtudiantList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EtudiantID)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" /> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a style="color:black" href="@Url.Action("Index", new { id = Model.AbsenceId })">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+﻿@model CollegeManagementProject.Models.Matiere
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br> <br>
+
+
+<center>
+    <h2 style="color:coral">Details de l'élève n°: @Html.DisplayFor(model => model.MatiereId)</h2>
+</center>
+
+
+<div style="text-align:center">
+    <br>
+    <div>
+        <a style="color:black" href="@Url.Action("Edit", new { id = Model.MatiereId })">
+            <i class="glyphicon glyphicon-edit"></i> |
+            <a style="color:black" href="@Url.Action("Index", new { id = Model.MatiereId })">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+    </div>
+
+    <hr />
+    <dl class="dl-horizontal0" style="text-align:center">
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+        <dt>
+            Date de cours
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateMatiere)
+        </dd>
+
+
+        <dt>
+            Code salle
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalleId)
+        </dd>
+
+
+        <dt>
+            Code niveau
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NiveauId)
+        </dd>
+
+
+        <dt>
+            Nom enseignant
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnseignantId)
+        </dd>
+    </dl>
+</div>
+<br>
